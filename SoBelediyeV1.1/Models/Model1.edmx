@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SobelediyeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sokak" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mahalle" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Koy" Type="nchar" MaxLength="50" />
+          <Property Name="Tarif" Type="nchar" MaxLength="50" />
+          <Property Name="Kullanici_ID" Type="int" Nullable="false" />
+          <Property Name="Il_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evrak">
+          <Key>
+            <PropertyRef Name="EvrakID" />
+          </Key>
+          <Property Name="EvrakID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desc" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Baslik" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tur" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tarih" Type="date" Nullable="false" />
+          <Property Name="Kullanici_ID" Type="int" Nullable="false" />
+          <Property Name="KurumYetkili_ID" Type="int" />
+          <Property Name="Adres_ID" Type="int" />
+          <Property Name="Istek_ID" Type="int" />
+          <Property Name="Foto_ID" Type="int" />
+          <Property Name="Video_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="Foto_ID" />
+          </Key>
+          <Property Name="Foto_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto_Location_ID" Type="int" />
+          <Property Name="Foto_Link" Type="int" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Il_ID" />
+          </Key>
+          <Property Name="Il_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Il" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ilce_ID" Type="int" Nullable="false" />
+          <Property Name="Kullanici_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilce">
+          <Key>
+            <PropertyRef Name="Ilce_ID" />
+          </Key>
+          <Property Name="Ilce_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ilce" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IstekSikayet">
+          <Key>
+            <PropertyRef Name="Istek_ID" />
+          </Key>
+          <Property Name="Istek_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SosYetkili_ID" Type="int" />
+          <Property Name="Kullanıcı_ID" Type="int" Nullable="false" />
+          <Property Name="Konu" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Desc" Type="nchar" MaxLength="3000" Nullable="false" />
+          <Property Name="Tarih" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adres_ID" Type="int" />
+          <Property Name="Foto_ID" Type="int" />
+          <Property Name="Video_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kullanici_ID" />
+          </Key>
+          <Property Name="Kullanici_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Soyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="75" />
+          <Property Name="Telefon" Type="int" Nullable="false" />
+          <Property Name="Adres" Type="int" Nullable="false" />
+          <Property Name="EvrakID" Type="int" />
+          <Property Name="YorumID" Type="int" />
+          <Property Name="Istek_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="KurumYetkili">
+          <Key>
+            <PropertyRef Name="YetkiliID" />
+          </Key>
+          <Property Name="YetkiliID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Soyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cevap" Type="nchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SosyalMedya">
+          <Key>
+            <PropertyRef Name="Sos_Medd_ID" />
+          </Key>
+          <Property Name="Sos_Medd_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Twwetler" Type="nchar" MaxLength="10" />
+          <Property Name="Postlar" Type="nchar" MaxLength="10" />
+          <Property Name="Yorum_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SosyalMedyaEkibi">
+          <Key>
+            <PropertyRef Name="YetkiliID" />
+          </Key>
+          <Property Name="YetkiliID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Soyad" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nchar" MaxLength="75" Nullable="false" />
+          <Property Name="Telefon" Type="int" Nullable="false" />
+          <Property Name="Nick" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cevap" Type="nchar" MaxLength="500" />
+          <Property Name="Onay_Durum" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Video_ID" />
+          </Key>
+          <Property Name="Video_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Video_Location" Type="int" />
+          <Property Name="Video_Link" Type="int" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="Yorum_ID" />
+          </Key>
+          <Property Name="Yorum_ID" Type="int" Nullable="false" />
+          <Property Name="Kullanici_ID" Type="int" />
+          <Property Name="Yetkili_ID" Type="int" />
+          <Property Name="YorumDesc" Type="nchar" MaxLength="3000" Nullable="false" />
+          <Property Name="Likee" Type="int" Nullable="false" />
+          <Property Name="Dislike" Type="int" Nullable="false" />
+          <Property Name="Tarih" Type="date" Nullable="false" />
+          <Property Name="Adres_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Adres_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Il_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Il_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Kullanici1">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="Foto_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Foto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_IstekSikayet">
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IstekSikayet">
+              <PropertyRef Name="Istek_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Istek_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_KurumYetkili">
+          <End Role="KurumYetkili" Type="Self.KurumYetkili" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KurumYetkili">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="KurumYetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Video_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Video_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Il_Ilce">
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
+          <End Role="Il" Type="Self.Il" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Ilce_ID" />
+            </Principal>
+            <Dependent Role="Il">
+              <PropertyRef Name="Ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="Foto_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Foto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Kullanıcı_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_SosyalMedyaEkibi">
+          <End Role="SosyalMedyaEkibi" Type="Self.SosyalMedyaEkibi" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SosyalMedyaEkibi">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="SosYetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Video_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Video_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SosyalMedya_Yorumlar">
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="0..1" />
+          <End Role="SosyalMedya" Type="Self.SosyalMedya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yorumlar">
+              <PropertyRef Name="Yorum_ID" />
+            </Principal>
+            <Dependent Role="SosyalMedya">
+              <PropertyRef Name="Yorum_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_SosyalMedyaEkibi">
+          <End Role="SosyalMedyaEkibi" Type="Self.SosyalMedyaEkibi" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SosyalMedyaEkibi">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Yetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SobelediyeModelStoreContainer">
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evrak" EntityType="Self.Evrak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilce" EntityType="Self.Ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IstekSikayet" EntityType="Self.IstekSikayet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KurumYetkili" EntityType="Self.KurumYetkili" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SosyalMedya" EntityType="Self.SosyalMedya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SosyalMedyaEkibi" EntityType="Self.SosyalMedyaEkibi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adres_Il" Association="Self.FK_Adres_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Kullanici1" Association="Self.FK_Adres_Kullanici1">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Adres" Association="Self.FK_Evrak_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Foto" Association="Self.FK_Evrak_Foto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_IstekSikayet" Association="Self.FK_Evrak_IstekSikayet">
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Kullanici" Association="Self.FK_Evrak_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_KurumYetkili" Association="Self.FK_Evrak_KurumYetkili">
+            <End Role="KurumYetkili" EntitySet="KurumYetkili" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Video" Association="Self.FK_Evrak_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Il_Ilce" Association="Self.FK_Il_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="Il" EntitySet="Il" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Adres" Association="Self.FK_IstekSikayet_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Foto" Association="Self.FK_IstekSikayet_Foto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Kullanici" Association="Self.FK_IstekSikayet_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_SosyalMedyaEkibi" Association="Self.FK_IstekSikayet_SosyalMedyaEkibi">
+            <End Role="SosyalMedyaEkibi" EntitySet="SosyalMedyaEkibi" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Video" Association="Self.FK_IstekSikayet_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SosyalMedya_Yorumlar" Association="Self.FK_SosyalMedya_Yorumlar">
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+            <End Role="SosyalMedya" EntitySet="SosyalMedya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Adres" Association="Self.FK_Yorumlar_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Kullanici" Association="Self.FK_Yorumlar_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_SosyalMedyaEkibi" Association="Self.FK_Yorumlar_SosyalMedyaEkibi">
+            <End Role="SosyalMedyaEkibi" EntitySet="SosyalMedyaEkibi" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SobelediyeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sokak" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mahalle" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Koy" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Tarif" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Kullanici_ID" Type="Int32" Nullable="false" />
+          <Property Name="Il_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Il" Relationship="Self.FK_Adres_Il" FromRole="Adres" ToRole="Il" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Adres_Kullanici1" FromRole="Adres" ToRole="Kullanici" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_Adres" FromRole="Adres" ToRole="Evrak" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_IstekSikayet_Adres" FromRole="Adres" ToRole="IstekSikayet" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Adres" FromRole="Adres" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="Evrak">
+          <Key>
+            <PropertyRef Name="EvrakID" />
+          </Key>
+          <Property Name="EvrakID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desc" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tur" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kullanici_ID" Type="Int32" Nullable="false" />
+          <Property Name="KurumYetkili_ID" Type="Int32" />
+          <Property Name="Adres_ID" Type="Int32" />
+          <Property Name="Istek_ID" Type="Int32" />
+          <Property Name="Foto_ID" Type="Int32" />
+          <Property Name="Video_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Evrak_Adres" FromRole="Evrak" ToRole="Adres" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_Evrak_Foto" FromRole="Evrak" ToRole="Foto" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_Evrak_IstekSikayet" FromRole="Evrak" ToRole="IstekSikayet" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Evrak_Kullanici" FromRole="Evrak" ToRole="Kullanici" />
+          <NavigationProperty Name="KurumYetkili" Relationship="Self.FK_Evrak_KurumYetkili" FromRole="Evrak" ToRole="KurumYetkili" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_Evrak_Video" FromRole="Evrak" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="Foto_ID" />
+          </Key>
+          <Property Name="Foto_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto_Location_ID" Type="Int32" />
+          <Property Name="Foto_Link" Type="Int32" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_Foto" FromRole="Foto" ToRole="Evrak" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_IstekSikayet_Foto" FromRole="Foto" ToRole="IstekSikayet" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Il_ID" />
+          </Key>
+          <Property Name="Il_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Il1" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ilce_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kullanici_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_Il" FromRole="Il" ToRole="Adres" />
+          <NavigationProperty Name="Ilce" Relationship="Self.FK_Il_Ilce" FromRole="Il" ToRole="Ilce" />
+        </EntityType>
+        <EntityType Name="Ilce">
+          <Key>
+            <PropertyRef Name="Ilce_ID" />
+          </Key>
+          <Property Name="Ilce_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ilce1" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Il" Relationship="Self.FK_Il_Ilce" FromRole="Ilce" ToRole="Il" />
+        </EntityType>
+        <EntityType Name="IstekSikayet">
+          <Key>
+            <PropertyRef Name="Istek_ID" />
+          </Key>
+          <Property Name="Istek_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SosYetkili_ID" Type="Int32" />
+          <Property Name="Kullanıcı_ID" Type="Int32" Nullable="false" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="3000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tarih" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Adres_ID" Type="Int32" />
+          <Property Name="Foto_ID" Type="Int32" />
+          <Property Name="Video_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_IstekSikayet_Adres" FromRole="IstekSikayet" ToRole="Adres" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_IstekSikayet" FromRole="IstekSikayet" ToRole="Evrak" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_IstekSikayet_Foto" FromRole="IstekSikayet" ToRole="Foto" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_IstekSikayet_Kullanici" FromRole="IstekSikayet" ToRole="Kullanici" />
+          <NavigationProperty Name="SosyalMedyaEkibi" Relationship="Self.FK_IstekSikayet_SosyalMedyaEkibi" FromRole="IstekSikayet" ToRole="SosyalMedyaEkibi" />
+          <NavigationProperty Name="Video" Relationship="Self.FK_IstekSikayet_Video" FromRole="IstekSikayet" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Kullanici_ID" />
+          </Key>
+          <Property Name="Kullanici_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="75" FixedLength="true" Unicode="true" />
+          <Property Name="Telefon" Type="Int32" Nullable="false" />
+          <Property Name="Adres" Type="Int32" Nullable="false" />
+          <Property Name="EvrakID" Type="Int32" />
+          <Property Name="YorumID" Type="Int32" />
+          <Property Name="Istek_ID" Type="Int32" />
+          <NavigationProperty Name="Adres1" Relationship="Self.FK_Adres_Kullanici1" FromRole="Kullanici" ToRole="Adres" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_Kullanici" FromRole="Kullanici" ToRole="Evrak" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_IstekSikayet_Kullanici" FromRole="Kullanici" ToRole="IstekSikayet" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Kullanici" FromRole="Kullanici" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="KurumYetkili">
+          <Key>
+            <PropertyRef Name="YetkiliID" />
+          </Key>
+          <Property Name="YetkiliID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cevap" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_KurumYetkili" FromRole="KurumYetkili" ToRole="Evrak" />
+        </EntityType>
+        <EntityType Name="SosyalMedya">
+          <Key>
+            <PropertyRef Name="Sos_Medd_ID" />
+          </Key>
+          <Property Name="Sos_Medd_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Twwetler" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Postlar" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Yorum_ID" Type="Int32" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK_SosyalMedya_Yorumlar" FromRole="SosyalMedya" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="SosyalMedyaEkibi">
+          <Key>
+            <PropertyRef Name="YetkiliID" />
+          </Key>
+          <Property Name="YetkiliID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="75" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="Int32" Nullable="false" />
+          <Property Name="Nick" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cevap" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="Onay_Durum" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_IstekSikayet_SosyalMedyaEkibi" FromRole="SosyalMedyaEkibi" ToRole="IstekSikayet" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_SosyalMedyaEkibi" FromRole="SosyalMedyaEkibi" ToRole="Yorumlar" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Video_ID" />
+          </Key>
+          <Property Name="Video_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Video_Location" Type="Int32" />
+          <Property Name="Video_Link" Type="Int32" />
+          <NavigationProperty Name="Evrak" Relationship="Self.FK_Evrak_Video" FromRole="Video" ToRole="Evrak" />
+          <NavigationProperty Name="IstekSikayet" Relationship="Self.FK_IstekSikayet_Video" FromRole="Video" ToRole="IstekSikayet" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="Yorum_ID" />
+          </Key>
+          <Property Name="Yorum_ID" Type="Int32" Nullable="false" />
+          <Property Name="Kullanici_ID" Type="Int32" />
+          <Property Name="Yetkili_ID" Type="Int32" />
+          <Property Name="YorumDesc" Type="String" MaxLength="3000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Likee" Type="Int32" Nullable="false" />
+          <Property Name="Dislike" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Adres_ID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Yorumlar_Adres" FromRole="Yorumlar" ToRole="Adres" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Yorumlar_Kullanici" FromRole="Yorumlar" ToRole="Kullanici" />
+          <NavigationProperty Name="SosyalMedya" Relationship="Self.FK_SosyalMedya_Yorumlar" FromRole="Yorumlar" ToRole="SosyalMedya" />
+          <NavigationProperty Name="SosyalMedyaEkibi" Relationship="Self.FK_Yorumlar_SosyalMedyaEkibi" FromRole="Yorumlar" ToRole="SosyalMedyaEkibi" />
+        </EntityType>
+        <Association Name="FK_Adres_Il">
+          <End Role="Il" Type="Self.Il" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Il">
+              <PropertyRef Name="Il_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Il_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Adres_Kullanici1">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Adres_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="Foto_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Foto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_IstekSikayet">
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IstekSikayet">
+              <PropertyRef Name="Istek_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Istek_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_KurumYetkili">
+          <End Role="KurumYetkili" Type="Self.KurumYetkili" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KurumYetkili">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="KurumYetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evrak_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="Evrak" Type="Self.Evrak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Video_ID" />
+            </Principal>
+            <Dependent Role="Evrak">
+              <PropertyRef Name="Video_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="Foto_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Foto_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Il_Ilce">
+          <End Role="Ilce" Type="Self.Ilce" Multiplicity="1" />
+          <End Role="Il" Type="Self.Il" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilce">
+              <PropertyRef Name="Ilce_ID" />
+            </Principal>
+            <Dependent Role="Il">
+              <PropertyRef Name="Ilce_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Kullanıcı_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_SosyalMedyaEkibi">
+          <End Role="SosyalMedyaEkibi" Type="Self.SosyalMedyaEkibi" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SosyalMedyaEkibi">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="SosYetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IstekSikayet_Video">
+          <End Role="Video" Type="Self.Video" Multiplicity="0..1" />
+          <End Role="IstekSikayet" Type="Self.IstekSikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="Video_ID" />
+            </Principal>
+            <Dependent Role="IstekSikayet">
+              <PropertyRef Name="Video_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Kullanici_ID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Kullanici_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SosyalMedya_Yorumlar">
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="0..1" />
+          <End Role="SosyalMedya" Type="Self.SosyalMedya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yorumlar">
+              <PropertyRef Name="Yorum_ID" />
+            </Principal>
+            <Dependent Role="SosyalMedya">
+              <PropertyRef Name="Yorum_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_SosyalMedyaEkibi">
+          <End Role="SosyalMedyaEkibi" Type="Self.SosyalMedyaEkibi" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SosyalMedyaEkibi">
+              <PropertyRef Name="YetkiliID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="Yetkili_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SobelediyeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adres" EntityType="Self.Adres" />
+          <EntitySet Name="Evrak" EntityType="Self.Evrak" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" />
+          <EntitySet Name="Il" EntityType="Self.Il" />
+          <EntitySet Name="Ilce" EntityType="Self.Ilce" />
+          <EntitySet Name="IstekSikayet" EntityType="Self.IstekSikayet" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="KurumYetkili" EntityType="Self.KurumYetkili" />
+          <EntitySet Name="SosyalMedya" EntityType="Self.SosyalMedya" />
+          <EntitySet Name="SosyalMedyaEkibi" EntityType="Self.SosyalMedyaEkibi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+          <AssociationSet Name="FK_Adres_Il" Association="Self.FK_Adres_Il">
+            <End Role="Il" EntitySet="Il" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Adres_Kullanici1" Association="Self.FK_Adres_Kullanici1">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Adres" Association="Self.FK_Evrak_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Adres" Association="Self.FK_IstekSikayet_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Adres" Association="Self.FK_Yorumlar_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Foto" Association="Self.FK_Evrak_Foto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_IstekSikayet" Association="Self.FK_Evrak_IstekSikayet">
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Kullanici" Association="Self.FK_Evrak_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_KurumYetkili" Association="Self.FK_Evrak_KurumYetkili">
+            <End Role="KurumYetkili" EntitySet="KurumYetkili" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evrak_Video" Association="Self.FK_Evrak_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="Evrak" EntitySet="Evrak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Foto" Association="Self.FK_IstekSikayet_Foto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Il_Ilce" Association="Self.FK_Il_Ilce">
+            <End Role="Ilce" EntitySet="Ilce" />
+            <End Role="Il" EntitySet="Il" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Kullanici" Association="Self.FK_IstekSikayet_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_SosyalMedyaEkibi" Association="Self.FK_IstekSikayet_SosyalMedyaEkibi">
+            <End Role="SosyalMedyaEkibi" EntitySet="SosyalMedyaEkibi" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IstekSikayet_Video" Association="Self.FK_IstekSikayet_Video">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="IstekSikayet" EntitySet="IstekSikayet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Kullanici" Association="Self.FK_Yorumlar_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SosyalMedya_Yorumlar" Association="Self.FK_SosyalMedya_Yorumlar">
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+            <End Role="SosyalMedya" EntitySet="SosyalMedya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_SosyalMedyaEkibi" Association="Self.FK_Yorumlar_SosyalMedyaEkibi">
+            <End Role="SosyalMedyaEkibi" EntitySet="SosyalMedyaEkibi" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SobelediyeModelStoreContainer" CdmEntityContainer="SobelediyeEntities">
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="SobelediyeModel.Adres">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+                <ScalarProperty Name="Sokak" ColumnName="Sokak" />
+                <ScalarProperty Name="Mahalle" ColumnName="Mahalle" />
+                <ScalarProperty Name="Koy" ColumnName="Koy" />
+                <ScalarProperty Name="Tarif" ColumnName="Tarif" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="Il_ID" ColumnName="Il_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evrak">
+            <EntityTypeMapping TypeName="SobelediyeModel.Evrak">
+              <MappingFragment StoreEntitySet="Evrak">
+                <ScalarProperty Name="EvrakID" ColumnName="EvrakID" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="KurumYetkili_ID" ColumnName="KurumYetkili_ID" />
+                <ScalarProperty Name="Adres_ID" ColumnName="Adres_ID" />
+                <ScalarProperty Name="Istek_ID" ColumnName="Istek_ID" />
+                <ScalarProperty Name="Foto_ID" ColumnName="Foto_ID" />
+                <ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Foto">
+            <EntityTypeMapping TypeName="SobelediyeModel.Foto">
+              <MappingFragment StoreEntitySet="Foto">
+                <ScalarProperty Name="Foto_ID" ColumnName="Foto_ID" />
+                <ScalarProperty Name="Foto_Location_ID" ColumnName="Foto_Location_ID" />
+                <ScalarProperty Name="Foto_Link" ColumnName="Foto_Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Il">
+            <EntityTypeMapping TypeName="SobelediyeModel.Il">
+              <MappingFragment StoreEntitySet="Il">
+                <ScalarProperty Name="Il_ID" ColumnName="Il_ID" />
+                <ScalarProperty Name="Il1" ColumnName="Il" />
+                <ScalarProperty Name="Ilce_ID" ColumnName="Ilce_ID" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilce">
+            <EntityTypeMapping TypeName="SobelediyeModel.Ilce">
+              <MappingFragment StoreEntitySet="Ilce">
+                <ScalarProperty Name="Ilce_ID" ColumnName="Ilce_ID" />
+                <ScalarProperty Name="Ilce1" ColumnName="Ilce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IstekSikayet">
+            <EntityTypeMapping TypeName="SobelediyeModel.IstekSikayet">
+              <MappingFragment StoreEntitySet="IstekSikayet">
+                <ScalarProperty Name="Istek_ID" ColumnName="Istek_ID" />
+                <ScalarProperty Name="SosYetkili_ID" ColumnName="SosYetkili_ID" />
+                <ScalarProperty Name="Kullanıcı_ID" ColumnName="Kullanıcı_ID" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Adres_ID" ColumnName="Adres_ID" />
+                <ScalarProperty Name="Foto_ID" ColumnName="Foto_ID" />
+                <ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="SobelediyeModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="EvrakID" ColumnName="EvrakID" />
+                <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+                <ScalarProperty Name="Istek_ID" ColumnName="Istek_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KurumYetkili">
+            <EntityTypeMapping TypeName="SobelediyeModel.KurumYetkili">
+              <MappingFragment StoreEntitySet="KurumYetkili">
+                <ScalarProperty Name="YetkiliID" ColumnName="YetkiliID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Cevap" ColumnName="Cevap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SosyalMedya">
+            <EntityTypeMapping TypeName="SobelediyeModel.SosyalMedya">
+              <MappingFragment StoreEntitySet="SosyalMedya">
+                <ScalarProperty Name="Sos_Medd_ID" ColumnName="Sos_Medd_ID" />
+                <ScalarProperty Name="Twwetler" ColumnName="Twwetler" />
+                <ScalarProperty Name="Postlar" ColumnName="Postlar" />
+                <ScalarProperty Name="Yorum_ID" ColumnName="Yorum_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SosyalMedyaEkibi">
+            <EntityTypeMapping TypeName="SobelediyeModel.SosyalMedyaEkibi">
+              <MappingFragment StoreEntitySet="SosyalMedyaEkibi">
+                <ScalarProperty Name="YetkiliID" ColumnName="YetkiliID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Cevap" ColumnName="Cevap" />
+                <ScalarProperty Name="Onay_Durum" ColumnName="Onay_Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SobelediyeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="SobelediyeModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+                <ScalarProperty Name="Video_Location" ColumnName="Video_Location" />
+                <ScalarProperty Name="Video_Link" ColumnName="Video_Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorumlar">
+            <EntityTypeMapping TypeName="SobelediyeModel.Yorumlar">
+              <MappingFragment StoreEntitySet="Yorumlar">
+                <ScalarProperty Name="Yorum_ID" ColumnName="Yorum_ID" />
+                <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+                <ScalarProperty Name="Yetkili_ID" ColumnName="Yetkili_ID" />
+                <ScalarProperty Name="YorumDesc" ColumnName="YorumDesc" />
+                <ScalarProperty Name="Likee" ColumnName="Likee" />
+                <ScalarProperty Name="Dislike" ColumnName="Dislike" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Adres_ID" ColumnName="Adres_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

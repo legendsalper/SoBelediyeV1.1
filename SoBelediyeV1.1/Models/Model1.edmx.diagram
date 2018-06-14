@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c07efe04c44a4fb5a841b3f9e955daa2" Name="Diagram1">
+        <EntityTypeShape EntityType="SobelediyeModel.Adres" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Evrak" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Foto" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Il" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Ilce" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.IstekSikayet" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Kullanici" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.KurumYetkili" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.SosyalMedya" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.SosyalMedyaEkibi" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Video" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SobelediyeModel.Yorumlar" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="SobelediyeModel.FK_Adres_Il" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Adres_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_Adres" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_IstekSikayet_Adres" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Yorumlar_Adres" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_Foto" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_IstekSikayet" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_KurumYetkili" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Evrak_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_IstekSikayet_Foto" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Il_Ilce" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_IstekSikayet_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_IstekSikayet_SosyalMedyaEkibi" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_IstekSikayet_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Yorumlar_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_SosyalMedya_Yorumlar" ManuallyRouted="false" />
+        <AssociationConnector Association="SobelediyeModel.FK_Yorumlar_SosyalMedyaEkibi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
